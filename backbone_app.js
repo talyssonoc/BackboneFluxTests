@@ -7,8 +7,6 @@ var TodoAppBackbone = Backbone.View.extend({
 	initialize: function() {
 		this.store = new TodoCollection();
 
-		var store = this.store;
-
 		this.actions.create.listen(this.store.createTodo.bind(this.store));
 		this.actions.toggle.listen(this.store.toggleTodo.bind(this.store));
 		this.actions.remove.listen(this.store.removeTodo.bind(this.store));
