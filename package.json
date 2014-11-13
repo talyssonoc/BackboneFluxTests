@@ -1,0 +1,11 @@
+{
+  "name": "FluxApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "reflux": "^0.1.15"
+  }
+}
