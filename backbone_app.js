@@ -62,19 +62,21 @@ var TodoCollection = Backbone.Collection.extend({
 	},
 
 	removeTodo: function(todo) {
-		this.remove(todo);
-		this.trigger('change');
+		if(confirm("Remove ?")) {
+			this.remove(todo);
+			this.trigger('change');
+		}
 	}
 });
 
 var TodoView = Backbone.View.extend({
 	tagName: 'li',
 
-	template: _.template('<input type=\'checkbox\' <% if(complete) { print(\'checked="checked"\'); } %>/><span><%= title %></span>'),
+	template: _.template('<input type=\'checkbox\' <% if(complete) { print(\'checked="checked"\'); } %>/><span><%= title %></span> <span class="remove">x</span>'),
 
 	events: {
-		'click': 'toggle',
-		'dblclick': 'remove'
+		'click input': 'toggle',
+		'click .remove': 'remove'
 	},
 
 	initialize: function() {
