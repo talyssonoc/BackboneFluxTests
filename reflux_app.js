@@ -2,11 +2,7 @@ $(function() {
 
     var TodoAppReflux = {};
 
-    TodoAppReflux.actions = Reflux.createActions([
-        'create',
-        'toggle',
-        'remove'
-    ]);
+    TodoAppReflux.actions = Utils.getRefluxActions();
 
     TodoAppReflux.store = Reflux.createStore({
         init: function init() {
@@ -45,7 +41,7 @@ $(function() {
 
     });
 
-    TodoAppReflux.appElement = $('#flux_app')
+    TodoAppReflux.appElement = $('#reflux_app')
 
     TodoAppReflux.store.listen(function(todoList) {
 
@@ -69,17 +65,21 @@ $(function() {
 
                 todoName = $('<span>' + todoList[t].text + '</span>');
                 todoCheckbox = $('<input type="checkbox" ' + (currentTodo.complete ? 'checked="checked"' : '') + '/>');
+                todoRemoveButton = $('<span class="remove">&nbsp;x</span>');
                 todo = $('<li></li>');
 
                 todo.append(todoCheckbox);
                 todo.append(todoName);
+                todo.append(todoRemoveButton);
 
-                todo.click(function() {
+                todoCheckbox.click(function() {
                     TodoAppReflux.actions.toggle(currentTodo);
                 });
 
-                todo.dblclick(function() {
-                    TodoAppReflux.actions.remove(currentTodo.id);
+                todoRemoveButton.click(function() {
+                    if(confirm("Remove ?")) {
+                        TodoAppReflux.actions.remove(currentTodo.id);
+                    }
                 })
 
                 todosElement.append(todo);

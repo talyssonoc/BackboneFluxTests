@@ -8,12 +8,14 @@
 	<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
 	<script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
 	<script type="text/javascript" src="bower_components/reflux/dist/reflux.min.js"></script>
+	<script type="text/javascript" src="bower_components/delorean/dist/delorean.min.js"></script>
 
 	<script type="text/javascript" src="utils.js"></script>
 
-	<script type="text/javascript" src="flux_app.js"></script>
-
-	<script type="text/javascript" src="backbone_app.js"></script>
+	<script type="text/javascript" src="reflux_app.js"></script>
+	<script type="text/javascript" src="backbone_reflux_app.js"></script>
+	<script type="text/javascript" src="delorean_app.js"></script>
+	<script type="text/javascript" src="backbone_delorean_app.js"></script>
 	
 	<style>
 		
@@ -21,8 +23,7 @@
 			margin: 0;
 		}
 
-		#flux_app,
-		#backbone_app {
+		.app {
 			height: 300px;
 			width: 300px;
 			border: 1px solid black;
@@ -32,22 +33,42 @@
 			float: left;
 		}
 
+		div.test {
+			clear: both;
+		}
+
 	</style>
 
 </head>
 <body>
 	
-	<div id="flux_app">
-		<h3>Flux</h3>
-		<ul class="todos"></ul>
-		<button class="add">+</button>
+	<div class="test">
+		<div id="reflux_app" class="app">
+			<h3>Reflux</h3>
+			<ul class="todos"></ul>
+			<button class="add">+</button>
+		</div>
+
+		<div id="backbone_reflux_app" class="app">
+			<h3>Backbone + Reflux</h3>
+			<ul class="todos"></ul>
+			<button class="add">+</button>
+		</div>
 	</div>
 
-	<div id="backbone_app">
-		<h3>Backbone</h3>
-		<ul class="todos"></ul>
-		<button class="add">+</button>
+	<div class="test">
+		<div id="delorean_app" class="app">
+			<h3>DeLorean</h3>
+			<ul class="todos"></ul>
+			<button class="add">+</button>
+		</div>
+		<div id="backbone_delorean_app" class="app">
+			<h3>Backbone + DeLorean</h3>
+			<ul class="todos"></ul>
+			<button class="add">+</button>
+		</div>
 	</div>
+	
 
 </body>
 </html>
